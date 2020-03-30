@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="productMapper">
+	<sql id="pno_cond">
+		where pno=#{pno}
+	</sql>
+	<insert id="add" parameterType="pvo">
+		insert into tbl_product
+		values(
+		seq_product.nextval,
+		#{title},#{content},
+		#{writer},sysdate,
+		sysdate,0,#{imgfile}
+		)
+	</insert>
+	<select id="list" resultType="pvo" parameterType="cri">
+		<![CDATA[
+		SELECT pno,title,writer,readcount,modd8 FROM 
+		(SELECT /*+index_desc(tbl_product tbl_product_pk)*/	
+			rownum rn, pno,title,writer,readcount,modd8	
+			FROM TBL_PRODUCT WHERE rownum <= #{pageNum} * #{amount}) 
+		WHERE rn > (#{pageNum}-1)* #{amount}
+		]]>
+	</select>
+	<select id="detail" parameterType="int" resultType="pvo">
+		select * from tbl_product
+		<include refid="pno_cond" />
+	</select>
+	<update id="modify" parameterType="pvo">
+		update tbl_product set
+		title=#{title}, content=#{content},
+		modd8=sysdate, imgfile=#{imgfile}
+		where pno=#{pno}
+	</update>
+	<delete id="remove" parameterType="int">
+		delete from tbl_product where
+		pno=#{pno}
+	</delete>
+	<update id="rmImg" parameterType="java.util.HashMap">
+		update tbl_product set imgfile=#{imgfile}
+		<include refid="pno_cond" />
+	</update>
+	<select id="total" resultType="int">
+		select count(pno) from tbl_product
+	</select>
+</mapper>
