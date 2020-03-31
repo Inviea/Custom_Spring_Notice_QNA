@@ -49,8 +49,8 @@
 	</tr>
 	<tr>
 		<td colspan="2">
-			<a href="/product/list?pageNum=${cri.pageNum }&amount=${cri.amount }" class="btn btn-outline-secondary">목록</a>
-			<a href="/product/modify?pno=${pvo.pno }&pageNum=${cri.pageNum }&amount=${cri.amount }" class="btn btn-outline-warning">수정</a>
+			<a href="/product/list?pageNum=${cri.pageNum }&amount=${cri.amount }&type=${cri.type }&keyword=${cri.keyword }" class="btn btn-outline-secondary">목록</a>
+			<a href="/product/modify?pno=${pvo.pno }&pageNum=${cri.pageNum }&amount=${cri.amount }&type=${cri.type }&keyword=${cri.keyword }" class="btn btn-outline-warning">수정</a>
 			<button type="button" class="btn btn-outline-danger" id="rmBtn">삭제</button>
 			
 </table>
@@ -59,8 +59,9 @@
 	<input type="hidden" name="pno" value="${pvo.pno }">
 	<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum }'/>">
 	<input type="hidden" name="amount" value="<c:out value='${cri.amount }'/>">
+	<input type="hidden" name="type" value="<c:out value='${cri.type }'/>">
+	<input type="hidden" name="keyword" value="<c:out value='${cri.keyword }'/>">
 </form>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		/* $("#rmBtn").click(function(){

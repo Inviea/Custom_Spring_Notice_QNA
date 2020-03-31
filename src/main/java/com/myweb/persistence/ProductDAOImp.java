@@ -55,7 +55,7 @@ public class ProductDAOImp implements ProductDAO {
 		sql.delete(ns+"rmImg", map);
 	}
 
-	public int selectOne() {
-		return sql.selectOne(ns+"total");
+	public int selectOne(Criteria cri) {
+		return sql.selectOne(ns+"total",cri);
 	}
 }

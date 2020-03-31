@@ -10,6 +10,8 @@
 	<input type="hidden" name="imgfile" value="${pvo.imgfile }">
 	<input type="hidden" name="pageNum" value="${cri.pageNum }">
 	<input type="hidden" name="amount" value="${cri.amount }">
+	<input type="hidden" name="type" value="<c:out value='${cri.type }'/>">
+	<input type="hidden" name="keyword" value="<c:out value='${cri.keyword }'/>">
 	<table class="table table-bordered">
 		<tr>
 			<th>등록 번호</th>
@@ -55,8 +57,6 @@
 			</td>
 	</table>
 </form>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		$(document).on("click", "img", function() {

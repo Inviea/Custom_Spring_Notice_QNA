@@ -50,7 +50,7 @@ public class ProductServiceImp implements ProductService{
 	}
 
 	@Override
-	public int totalCount() {
-		return pdao.selectOne();
+	public int totalCount(Criteria cri) {
+		return pdao.selectOne(cri);
 	}
 }

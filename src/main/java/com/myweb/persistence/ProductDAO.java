@@ -13,7 +13,7 @@ public interface ProductDAO {
 	public void update(ProductVO pvo);
 	public void delete(Integer pno);
 	public void deleteImg(Integer pno);
-	public int selectOne();
+	public int selectOne(Criteria cri);
 	
 	
 }

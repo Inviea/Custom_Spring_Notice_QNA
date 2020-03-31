@@ -54,7 +54,7 @@ public class ProductCtrl {
 		/*List<ProductVO> list = new ArrayList<>(); 
 		list = psv.list();*/
 		model.addAttribute("list", psv.list(cri));
-		int totalCnt = psv.totalCount();
+		int totalCnt = psv.totalCount(cri);
 		model.addAttribute("pgvo", new PagingVO(totalCnt, cri));
 	}
 	@GetMapping({"/detail", "/modify"})
@@ -74,6 +74,8 @@ public class ProductCtrl {
 		psv.modify(fp.fileModify(req));
 		reAttr.addAttribute("pageNum", cri.getPageNum());
 		reAttr.addAttribute("amount", cri.getAmount());
+		reAttr.addAttribute("type", cri.getType());
+		reAttr.addAttribute("keyword", cri.getKeyword());
 		reAttr.addFlashAttribute("result", "modify_ok");
 		return "redirect:/product/detail?pno="+req.getParameter("pno");
 	}
@@ -86,6 +88,8 @@ public class ProductCtrl {
 		psv.remove(pno);
 		reAttr.addAttribute("pageNum", cri.getPageNum());
 		reAttr.addAttribute("amount", cri.getAmount());
+		reAttr.addAttribute("type", cri.getType());
+		reAttr.addAttribute("keyword", cri.getKeyword());
 		reAttr.addFlashAttribute("result", "remove_ok");
 		return "redirect:/product/list";
 	}

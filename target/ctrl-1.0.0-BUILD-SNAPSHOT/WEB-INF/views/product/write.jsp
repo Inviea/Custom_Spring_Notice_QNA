@@ -6,7 +6,7 @@
 <jsp:include page="../00_header.jsp"></jsp:include>
 <jsp:include page="../10_nav.jsp"></jsp:include>
 <h2>상품 등록 페이지</h2>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 	<div class="form-group">
 		<label for="title">Title:</label> <input type="text"
 			class="form-control" placeholder="상품 명" id="title" name="title">
@@ -16,7 +16,7 @@
 			class="form-control" placeholder="등록자" id="writer" name="writer">
 	</div>
 	<div class="form-group">
-		<label for="title">File:</label> <input type="text"
+		<label for="title">File:</label> <input type="file"
 			class="form-control" placeholder="파일 등록 예정" id="imgfile"
 			name="imgfile">
 	</div>

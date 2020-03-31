@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.myweb</groupId>
 	<artifactId>ctrl</artifactId>
-	<name>Custom_Spring_Notice_QNA</name>
+	<name>SpringBoard_05_Search</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<!-- 배포 버전 -->

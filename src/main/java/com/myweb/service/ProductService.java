@@ -13,6 +13,6 @@ public interface ProductService {
 	public void modify(ProductVO pvo);
 	public void remove(Integer pno);
 	public void removeImg(int pno);
-	public int totalCount();
+	public int totalCount(Criteria cri);
 	
 }
