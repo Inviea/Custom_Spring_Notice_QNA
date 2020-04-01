@@ -7,6 +7,8 @@
 		<typeAlias type="java.lang.String" alias="string"/>
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="com.myweb.domain.Criteria" alias="cri"/>
+		<typeAlias type="com.myweb.domain.MemberDTO" alias="mdto"/>
+		
 	</typeAliases>
 	
 	
