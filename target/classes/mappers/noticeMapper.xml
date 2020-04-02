@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="noticeMapper">
+<sql id="nno_cond">
+	where nno=#{nno}
+</sql>
 <sql id="cri">
 <if test="type != null">
 <trim prefix=" and (" suffix=")"> 
@@ -45,7 +48,7 @@
 	update tbl_notice set
 	ntitle=#{title}, ncontent=#{content},
 	modd8=sysdate, nimg=#{img}, nfile=#{file}
-	where nno=#{nno}
+	<include refid="nno_cond" />
 </update>
 <select id="list">
 	<![CDATA[
@@ -61,22 +64,36 @@
 	]]>
 </select>
 <select id="uplist">
-
+	<![CDATA[
+	SELECT nno,ntitle,nwriter,ncontent,readcount,modd8 FROM 
+	(SELECT /*+index_desc(tbl_notice tbl_notice_pk)*/	
+		rownum rn,nno,ntitle,nwriter,ncontent,readcount,modd8	
+		FROM TBL_Notice WHERE nno>0 
+	]]>
+	<include refid="cri"/>
+	<![CDATA[
+		and rownum <= #{pageNum} * #{amount}) 
+	WHERE rn > (#{pageNum}-1)* #{amount}
+	]]>
 </select>
 <select id="total">
 	select count(nno) from tbl_notice where nno > 0 <include refid="cri"/>
 </select>
 <select id="detail">
-
+	select * from tbl_notice
+	<include refid="nno_cond" />
 </select>
-<delete id="">
-
+<delete id="remove" parameterType="int">
+	delete from tbl_notice
+	<include refid="nno_cond" />
 </delete>
-<update id="">
-
+<update id="rmImg" parameterType="java.util.HashMap">
+	update tbl_notice set nimg=#{img}
+	<include refid="nno_cond" />
 </update>
-<update id="">
-
+<update id="rmFile" parameterType="java.util.HashMap">
+	update tbl_notice set nfile=#{file}
+	<include refid="nno_cond" />
 </update>
 
 </mapper>

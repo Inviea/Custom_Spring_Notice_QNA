@@ -15,6 +15,18 @@ public class NoticeVO {
 	
 	public NoticeVO() {}
 	
+	public NoticeVO(String title, String writer, String content) {
+		this.title = title;
+		this.writer = writer;
+		this.content = content;
+	}
+
+	public NoticeVO(int nno, String title, String content) {
+		this.nno = nno;
+		this.title = title;
+		this.content = content;
+	}
+
 	public int getNno() {
 		return nno;
 	}
